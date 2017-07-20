@@ -115,7 +115,9 @@ MapCircle.prototype = {
       me.map.setCenter(cname);
 
       geocoder.getPoint(cname, function (data) {
-        me.map.centerAndZoom(new BMap.Point(data.lng || 116.404, data.lat || 39.915), me.level);
+        var lng = data && data.lng ? data.lng : 116.404;
+        var lat = data && data.lat ? data.lat : 116.404;
+        me.map.centerAndZoom(new BMap.Point(lng, lat), me.level);
       });
     }
   },
